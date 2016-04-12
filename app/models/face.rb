@@ -99,7 +99,7 @@ q
      
    CSV.open("#{Rails.root}/public/files/Vertical_Output.csv","w+") do |csv|
    csv << ["Item ID","Name","Value","Unit"]
-   CSV.foreach(file1.tempfile,:encoding=>("ISO8859"))do |line|
+   CSV.foreach(file1.tempfile,:encoding => 'iso-8859-1:utf-8')do |line|
    next if line[0].to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil
       
       x = line ; id=x.shift
