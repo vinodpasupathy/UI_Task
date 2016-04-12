@@ -5,7 +5,7 @@ require 'csv'
 class Face < ActiveRecord::Base
   def self.com_vertical(file1,file2)
   t=0
-   CSV.open("/home/altius/Documents/UI_Task/public/files/Vertical_Audit.csv","w") do |csv|
+   CSV.open("#{Rails.root}/public/files/Vertical_Audit.csv","w") do |csv|
    csv << ["Item ID","Name","Value","Unit"]
    CSV.foreach(file1.tempfile,:encoding=>("ISO8859"))do |line|
         t=t+1
@@ -23,7 +23,7 @@ class Face < ActiveRecord::Base
     end
 
    t=0
-    CSV.open("/home/altius/mahesh/UI_Task/public/files/Vertical_Shipment.csv","w") do |csv|
+    CSV.open("#{Rails.root}/public/files/Vertical_Shipment.csv","w") do |csv|
     csv << ["Item ID","Name","Value","Unit"]
     CSV.foreach(file2.tempfile,:encoding=>("ISO8859"))do |line|
         t=t+1
@@ -42,9 +42,9 @@ class Face < ActiveRecord::Base
  end
    
  def self.comparison
-  File.open("/home/altius/mahesh/UI_Task/public/files/Output_comparison.csv","w") do |c| 
-  a=File.open("/home/altius/mahesh/UI_Task/public/files/Vertical_Audit.csv","r",:headers=>'true').collect{|o|o.chomp}
-  b=File.open("/home/altius/mahesh/UI_Task/public/files/Vertical_Shipment.csv","r",:headers=>'true').collect{|o|o.chomp}
+  File.open("#{Rails.root}/public/files/Output_comparison.csv","w") do |c| 
+  a=File.open("#{Rails.root}/public/files/Vertical_Audit.csv","r",:headers=>'true').collect{|o|o.chomp}
+  b=File.open("#{Rails.root}/public/files/Vertical_Shipment.csv","r",:headers=>'true').collect{|o|o.chomp}
     if a != b
       c.puts b - a
     end
@@ -53,7 +53,7 @@ class Face < ActiveRecord::Base
      
  def self.uoms(file1,file2)
   t=0
-   CSV.open("/home/altius/mahesh/UI_Task/public/files/Vertical_UOM_Audit.csv","w") do |csv|
+   CSV.open("#{Rails.root}/public/files/Vertical_UOM_Audit.csv","w") do |csv|
    csv << ["Item ID","Name","Value","Unit"]
    CSV.foreach(file1.tempfile,:encoding=>("ISO8859"))do |line|
 
@@ -73,9 +73,9 @@ class Face < ActiveRecord::Base
 
       s=0
       t=0
-      CSV.open("/home/altius/mahesh/UI_Task/public/files/UOM_file_Output.csv","w") do |csv|
+      CSV.open("#{Rails.root}/public/files/UOM_file_Output.csv","w") do |csv|
       csv << ["Item ID","Name","Value","Unit"]
-        a=CSV.read("/home/altius/mahesh/UI_Task/public/files/Vertical_UOM_Audit.csv")
+        a=CSV.read("#{Rails.root}/public/files/Vertical_UOM_Audit.csv")
         b=CSV.read(file2.tempfile)
          
           a.each do |i|
@@ -168,7 +168,7 @@ q
 def self.consecutive(file1,filename)
 out=[]
 f=File.open(file1.tempfile,"r").read
- File.open("/home/altius/mahesh/UI_Task/public/files/Output_#{filename}","w+")do|ss| #{|file|file.puts("#{f[k]+" "+f[k+1]}")}
+ File.open("#{Rails.root}/public/files/Output_#{filename}","w+")do|ss| #{|file|file.puts("#{f[k]+" "+f[k+1]}")}
 f=f.split(" ")
 #f  = f.gsub(/\W+/,'')
 #next if  i =~ /\d/
@@ -189,7 +189,7 @@ i.times do |k|
    end
   end
 def self.dups(file1)
- CSV.open("/home/altius/mahesh/UI_Task/public/files/Repetitive_output.csv", "w") do |csv|
+ CSV.open("#{Rails.root}/public/files/Repetitive_output.csv", "w") do |csv|
    ff= CSV.read(file1.tempfile)
      @cc=ff.count
      ff.last(@cc-2).each do|i|
