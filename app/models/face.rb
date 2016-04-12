@@ -114,7 +114,7 @@ q
 
       add = dd,sd 
 
-      ad1 = add.transpose 
+      ad1 = add.reduce(&:zip).map(&:flatten) 
 
       ad3 = ad1 + ad 
 
