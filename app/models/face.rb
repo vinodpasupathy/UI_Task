@@ -80,7 +80,6 @@ class Face < ActiveRecord::Base
          
           a.each do |i|
           t=t+1
-q
             next if t==1
             if i[3]!=nil
                  b.each do |j|
