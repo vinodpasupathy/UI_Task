@@ -9,6 +9,7 @@ gem 'therubyracer'
 gem 'paperclip'
 gem 'pg'
 gem 'pjax_rails'
+gem 'rails_12factor', group: :production
 #gem "hunspell-ffi"
 gem 'iconv'
 gem 'smarter_csv'
