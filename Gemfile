@@ -9,7 +9,7 @@ gem 'therubyracer'
 gem 'paperclip'
 gem 'pg'
 gem 'pjax_rails'
-gem "hunspell-ffi"
+#gem "hunspell-ffi"
 gem 'iconv'
 gem 'smarter_csv'
 gem "roo"

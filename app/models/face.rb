@@ -131,7 +131,7 @@ q
    end
 
    def self.spell_check(file1)
-      speller = FFI::Hunspell.dict('en_GB')
+    #  speller = FFI::Hunspell.dict('en_GB')
        f=File.open(file1.tempfile,"r").read
            f=f.split(" ").uniq!
        f.each do |i|
