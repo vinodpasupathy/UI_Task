@@ -1,4 +1,3 @@
-#require 'ffi/hunspell'
 require 'roo'
 require 'spreadsheet'
 require 'iconv'
@@ -130,7 +129,7 @@ q
     end
    end
 
-   def self.spell_check(file1)
+=begin   def self.spell_check(file1)
     #  speller = FFI::Hunspell.dict('en_GB')
        f=File.open(file1.tempfile,"r").read
            f=f.split(" ").uniq!
@@ -164,7 +163,7 @@ q
 
 
    end
-  end
+=end
 
 def self.consecutive(file1,filename)
 out=[]

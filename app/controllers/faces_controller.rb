@@ -1,5 +1,4 @@
 require 'csv'
-#require 'ffi/hunspell'
 class FacesController < ApplicationController
   def index
       @face=Face.all
@@ -49,11 +48,11 @@ class FacesController < ApplicationController
     end
   end
 
-  def spellcheck
+=begin  def spellcheck
     @face=Face.new
   end
  
-  def spell_process
+ def spell_process
    if params[:face][:file_1].original_filename =~ /.\.csv$/i and params[:face][:file_2].original_filename =~ /.\.csv$/i
       file1=params[:face][:file_1]
       filename=params[:face][:file_1].original_filename
@@ -63,7 +62,7 @@ class FacesController < ApplicationController
       redirect_to faces_vert_help_path
    end
   end
-
+=end
   def uom
       @face=Face.new
   end
