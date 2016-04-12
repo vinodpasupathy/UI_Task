@@ -97,7 +97,7 @@ q
    
    def self.verticals(file1)
      
-   CSV.open("/home/altius/Documents/UI_Task/public/files/Vertical_Output.csv","w+") do |csv|
+   CSV.open("#{Rails.root}/public/files/Vertical_Output.csv","w+") do |csv|
    csv << ["Item ID","Name","Value","Unit"]
    CSV.foreach(file1.tempfile,:encoding=>("ISO8859"))do |line|
    next if line[0].to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil
