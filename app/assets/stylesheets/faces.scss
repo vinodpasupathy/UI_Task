@@ -1,0 +1,271 @@
+// Place all the styles related to the faces controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#navlist {
+    position: relative;
+}
+
+#navlist li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    }
+
+#navlist li, #navlist a {
+    height: 44px;
+    display: block;
+    }
+
+#index{
+   background: transparent url("/assets/logo.jpeg") no-repeat 0% 0%;
+   height: 26%;
+   width: 18%;
+   size: 100%;
+   display: block;
+   color: #000;
+   position: absolute;
+   top: 34%;
+   left: 6%;
+   }
+
+#h1 {
+   position:unset;
+   font-size:25px;
+   color:#3b6551;
+   left:25%;
+   }
+
+#header{
+   position: absolute;
+   top: 10%;
+   left: 29%;
+   }
+
+#content{
+   position: absolute;
+   top: 30%;
+   left: 28%;
+   }
+
+#shadow {
+    width: 40%;
+    height: 53%;
+    padding: 3%;
+    border-radius: 5% 5%;
+    background-color: white;
+    box-shadow: 1px 0px 16px grey;
+    position: absolute;
+    top: 20%;
+    left: 27%;
+    }
+
+
+ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   width: 60px;
+   background-color: #f1f1f1;
+    line-height: 50%;
+   }
+
+li a {
+   display: block;
+   color: #000;
+   padding: 8px 0 8px 16px;
+   text-decoration: none;
+   }
+
+li a:link {
+    color: red;
+   }
+
+li a:visited {
+    color: black;
+   }
+li a:hover {
+    color: green;
+   }
+
+li a:active {
+    color: blue;
+   }
+
+#home{
+    background: url('/assets/hom.jpeg') 0 0;
+    width: 80px;
+    height:80px;
+}
+
+#f{
+   position:absolute;
+   top:43%;
+   left:30%;
+   }
+
+#help{
+   position: absolute;
+   top: 40%;
+   left: 25%;
+   }
+#com_h{
+   background: transparent url("/assets/Comparison_help.png") no-repeat 0% 0%;
+   height: 100%;
+   width: 100%;
+   size: 100%;
+   display: block;
+   color: #000;
+   position: absolute;
+  
+}
+#ver_h{
+   background: transparent url("/assets/Vertical_help.png") no-repeat 0% 0%;
+   height: 100%;
+   width: 100%;
+   size: 100%;
+   display: block;
+   color: #000;
+   position: absolute;
+ }
+#uom_h{
+   background: transparent url("/assets/UOM_help.png") no-repeat 0% 0%;
+   height: 100%;
+   width: 100%;
+   size: 100%;
+   display: block;
+   color: #000;
+   position: absolute;
+   
+}
+/*#index_v{
+   background: transparent url("/assets/logo.jpeg") no-repeat 0% 0%;
+   height: 201px;
+   width: 180px;
+   size: 100%;
+   display: block;
+   color: #000;
+   position: absolute;
+   top: 34%;
+   left: 16%;
+   }
+
+#header_v{
+   position: absolute;
+   top: 13%;
+   left: 40%;
+   }
+
+#content_v{
+   position: absolute;
+   top: 30%;
+   left: 35%;
+   }
+
+#shadow_v {
+    width: 500px;
+    height: 200px;
+    padding: 15px;
+    border-radius: 15px 50px;
+    background-color: white;
+    box-shadow: 10px 10px 5px grey;
+    position: absolute;
+    top: 132px;
+    left: 241px;
+    }
+
+
+#index_c{
+   background: transparent url("/assets/logo.jpeg") no-repeat 0% 0%;
+   height: 201px;
+   width: 180px;
+   size: 100%;
+   display: block;
+   color: #000;
+   position: absolute;
+   top: 34%;
+   left: 10%;
+   }
+
+#header_c{
+   position: absolute;
+   top: 12%;
+   left: 25%;
+   }
+
+#content_c{
+   position: absolute;
+   top: 30%;
+   left: 28%;
+   }
+
+#shadow_c {
+    width: 500px;
+    height: 200px;
+    padding: 15px;
+    border-radius: 15px 50px;
+    background-color: white;
+    box-shadow: 10px 10px 5px grey;
+    position: absolute;
+    top: 132px;
+    left: 241px;
+    }
+
+
+#index_u{
+   background: transparent url("/assets/logo.jpeg") no-repeat 0% 0%;
+   height: 201px;
+   width: 180px;
+   size: 100%;
+   display: block;
+   color: #000;
+   position: absolute;
+   top: 34%;
+   left: 10%;
+   }
+
+#header_u{
+   position: absolute;
+   top: 13%;
+   left: 35%;
+   }
+
+#content_u{
+   position: absolute;
+   top: 30%;
+   left: 30%;
+   }
+
+#shadow_u{
+    width: 500px;
+    height: 190px;
+    padding: 15px;
+    border-radius: 15px 50px;
+    background-color: white;
+    box-shadow: 10px 10px 5px grey;
+    position: absolute;
+    top: 132px;
+    left: 241px;
+    }*/
+#hm{
+    position: absolute;
+    left: 9%;
+    top: 10%;
+}
+#hb{
+    position: absolute;
+    left: 6%;
+}
+.custab{
+    border: 5% solid #ccc;
+    padding: 1px;
+    margin: -8%;
+    margin-bottom: 1%;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }

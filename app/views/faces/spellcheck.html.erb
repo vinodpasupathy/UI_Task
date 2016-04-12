@@ -1,0 +1,29 @@
+<body >
+<ul><li style="list-style-type:none"><%= link_to "Home",faces_index_path%></li></ul>
+<div id='index'></div>
+<div id="h">
+<h3><center>File Spell Check</i></center></h3></div>
+<div id='con'>
+
+<table align="center" border="1">
+
+ <tr>
+  <%= form_for([@face], :url=>{:controller=>"faces", :action=>"spell_process"}) do |f|%>
+
+  <td><%= f.label :file_1,"Audit_File" %></td>
+  <td> <%= f.file_field :file_1,:accept => 'text/csv',:class=>"btn btn-warning"%></td>
+ </tr>
+
+ <tr>
+  <td> <%= f.submit "Check",:class=>"btn btn-info"%></td>
+  	<td> <%= link_to "Help" ,faces_vert_help_path%></td>
+ </tr>
+
+ <% end %>
+
+</b>
+
+</table>
+<center><b>Note:Upload CSV files only.</b></center>
+</div>
+</body>

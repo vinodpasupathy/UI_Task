@@ -1,0 +1,40 @@
+<body>
+
+<div id='hm'><%= link_to image_tag("/assets/hicon.png",height: '55', width:'55'),faces_index_path%></div>
+
+<div id="shadow">
+
+<div id='index'></div>
+
+<div id="header">
+<div id="h1"><i>Vertical Conversion</i></div></div>
+
+<div id='content'>
+
+<div class="table stripped custab">
+
+ <table class="table">
+
+  <tr>
+   <%= form_for([@face], :url=>{:controller=>"faces", :action=>"vert_process"}) do |f|%>
+   <td><%= f.label :file_1,"Input_File" %></td>
+   <td> <%= f.file_field :file_1,:accept => 'text/csv',class: 'form-control', :required => true%></td>
+  </tr>
+
+  <tr>
+   <td> <%= f.submit "Convert",:class => "btn btn-info" %></td>
+   <td><a href="http://192.168.1.52:3000/faces/help_ver"  target="popup"
+  onclick="window.open('http://192.168.1.52:3000/faces/help_ver','popup','width=700,height=400'); return false;"> Help</a></td>
+  </tr>
+
+ <% end %>
+
+</div>
+
+</table>
+</div>
+<center><b>Note:Upload (.csv) Files only.</b></center>
+
+</body>
+
+</div>

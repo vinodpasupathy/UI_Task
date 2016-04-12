@@ -1,0 +1,87 @@
+#require 'ffi/hunspell'
+#require 'iconv'
+require 'csv'
+class Face < ActiveRecord::Base
+   def self.comparision(file1,file2,c)
+       a=File.open(file1.tempfile,"r",:headers=>'true').collect{|o|o.chomp}
+       b=File.open(file2.tempfile,"r",:headers=>'true').collect{|o|o.chomp}
+         if a != b
+          c.puts b - a
+         end
+   end
+   
+   def self.spell_check(file1,c)
+      speller = FFI::Hunspell.dict('en_GB')
+       f=File.open(file1.tempfile,"r").read
+           f=f.split(" ").uniq!
+       f.each do |i|
+          next if i == i.upcase
+          next if  i =~ /\d/
+           i = i.strip
+           i = i.gsub(/\W+/,' ')
+        if speller.check?(i)
+
+        else
+              File.open("/home/altius/anand-ror/Firstop.csv","a+"){|file|file.puts("#{i}")}
+        end
+     end
+            f=File.open("/home/altius/anand-ror/Firstop.csv","r").read
+              f=f.split(" ").uniq!
+               f.each do |i|
+                 next if i == i.upcase
+                   next if  i =~ /\d/
+                     next if  i.length <= 2
+                       i = i.strip
+                         i = i.gsub(/\W+/,' ')
+                 if speller.check?(i)
+
+                  else
+                    puts "#{i.chomp}"
+                 # File.open("#{Rails.root}/files/Spellchecked_#{filename}","a+")
+               c.puts("#{i}")
+                 end
+              end
+
+
+   end
+   
+   def self.uoms(file1,file2,csv)
+      s=0
+      t=0
+      csv << ["Item ID","Name","Value","Unit"]
+        a=CSV.read(file1.tempfile)
+        b=CSV.read(file2.tempfile)
+         a.each do |i|
+           t+=1
+            next if t==1
+            if i[3]!=nil
+                 b.each do |j|
+                   s=j
+                    break if i[3]==s[0]
+                 end
+                    unless i[3]==s[0]
+                     csv<<i
+                 end
+            end
+        end
+     end
+   
+   def self.verticals(file1,csv)
+      t=0
+      csv << ["Item ID","Name","Value","Unit"]
+      CSV.foreach(file1.tempfile, :encoding =>"ISO8859-1")do |line|
+
+              t+=1
+              next if t == 1
+               x = line ; id=x.shift
+               ad=[]
+               ad=x.each_slice(3).to_a
+                 ad.each do|p|
+                         break if p[0] == nil
+                    unless p[1] == nil
+                     csv << [id] + p
+                    end
+                 end
+        end
+    end
+end
