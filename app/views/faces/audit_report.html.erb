@@ -15,7 +15,7 @@
   <tr>
    <%= form_for(:faces, :url=>{:controller=>"faces", :action=>"audit_process" ,:method=>"get"}) do |f|%>
     
-    <tr><td> <%= f.select :month, options_for_select([['Select Month',""], "January","February","March","April", "May","June", "July","August","September","October","November","December"]) %> </td><td> <%= f.text_field :year,:placeholder=>"Enter the Year"%> </td><td> <%= f.select :reporttype, options_for_select([["Select Report Type", ""], "Monthly","Yearly"]) %></td></tr>
+    <tr><td> <%= f.select :month, options_for_select([['Select Month',""], "January","February","March","April", "May","June", "July","August","September","October","November","December"]) %> </td><td> <%= f.text_field :year,:placeholder=>"Enter the Year",:required=>true%> </td><td> <%= f.select :reporttype, options_for_select([["Select Report Type", ""], "Monthly","Yearly"]) %></td></tr>
 
       
     <td> <%= f.file_field :aa,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
