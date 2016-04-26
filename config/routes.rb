@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'faces/vertical'
 
   get 'faces/compare'
-
+  get 'faces/audit_report'
+  get 'faces/audit_process'
+  post 'faces/audit_process'
   get 'faces/spellcheck'
 
   get 'faces/uom'

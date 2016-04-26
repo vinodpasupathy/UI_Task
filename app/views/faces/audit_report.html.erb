@@ -1,0 +1,82 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div id='hm'><%= link_to image_tag("/assets/hicon.png",height: '55', width:'55'),faces_index_path%></div>
+
+<h4 align="center"><i>Audit Report</i></h4>
+
+
+ <center><table class="table">
+
+  <tr>
+   <%= form_for(:faces, :url=>{:controller=>"faces", :action=>"audit_process" ,:method=>"get"}) do |f|%>
+    
+    <tr><td> <%= f.select :month, options_for_select([['Select Month',""], "January","February","March","April", "May","June", "July","August","September","October","November","December"]) %> </td><td> <%= f.text_field :year,:placeholder=>"Enter the Year"%> </td><td> <%= f.select :reporttype, options_for_select([["Select Report Type", ""], "Monthly","Yearly"]) %></td></tr>
+
+      
+    <td> <%= f.file_field :aa,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+      
+    <td> <%= f.text_field :a ,:placeholder=>"Enter the WUI"%></td><td> <%= f.text_field :aaa ,:placeholder=>"Enter the Project Name"%></td></tr>
+       
+    <tr> 
+    <td> <%= f.file_field :bb,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :b,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :bbb ,:placeholder=>"Enter the Project Name"%></td> </tr>
+    <tr> 
+    <td> <%= f.file_field :cc,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :c,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :ccc ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr>
+    <td> <%= f.file_field :dd,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :d,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :ddd ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr> 
+    <td> <%= f.file_field :ee,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :e,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :eee ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr> 
+    <td> <%= f.file_field :ff,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :f,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :fff ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr>
+    <td> <%= f.file_field :gg,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :g,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :ggg ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr>
+    <td> <%= f.file_field :hh,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :h,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :hhh ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr>
+    <td> <%= f.file_field :ii,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :i,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :iii ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr>
+    <td> <%= f.file_field :jj,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :j,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :jjj ,:placeholder=>"Enter the Project Name"%></td></tr>
+    
+    <tr>
+    <td> <%= f.file_field :kk,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :k,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :kkk ,:placeholder=>"Enter the Project Name"%></td></tr>
+
+    <tr>
+    <td> <%= f.file_field :ll,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
+    <td> <%= f.text_field :l,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :lll ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <tr>
+   <td> <%= f.submit "Submit",:class => "btn btn-info" %></td>
+   <td><a href="http://192.168.1.52:3000/faces/help_ver"  target="popup"
+  onclick="window.open('http://192.168.1.52:3000/faces/help_ver','popup','width=700,height=400'); return false;"> Help</a></td>
+  </tr>
+
+ <% end %>
+</table></center>
+<center><b>Note:Upload (.csv) Files only.</b></center>
+
+</body>
+
+</div>
+
+</html>
+

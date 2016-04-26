@@ -40,7 +40,162 @@ class Face < ActiveRecord::Base
        end
    end
  end
-   
+ def self.audit_task(file1,fmonth,anual,reporttyp)
+  if reporttyp=="Monthly"
+  tns=[]
+  name=[]
+  n=1;t=0;
+  a=[];b=[];c=[];d=[];e=[];g=[];quality=[];final=[];a3=[];first=[];
+  name1=[];a1=[];a2=[];totsq=[];totsa=[];totsater=[];err=[];qual=[];totsqu=[];totsam=[];qualper=[];errper=[];errp=[];qualp=[];toterr=[];toter=[];final=[]
+  totsqur=[];totsamr=[];toterrr=[],totpr=[];totp=[]
+  CSV.open("#{Rails.root}/public/out/outpro.csv" ,"w") do |csv|
+  csv << ["Name","Projectnames","Total sku","Sample count","FinalErrorCount","Error(%)","Quality(%)"]
+    file1.each do|kfile|
+     unless kfile[0] == nil
+      if kfile[1]==""
+        ff=CSV.read(kfile[0].tempfile)
+        ff.each_with_index do |row ,i| 
+          next if i==0
+          csv << [row[0],row[1].to_f,row[2].to_f,row[3].to_f]
+        end
+      else
+        wui=kfile[n].to_f
+        projectname=kfile[2]   
+        ff=CSV.read(kfile[0].tempfile)
+        ff.shift
+        name=ff.collect{|row| row[1]}.uniq
+
+           name.each do |i|
+            @tns=ff.select{|row| i==row[1]}
+            ff.each do|row|
+              if i==row[1] && row[2] != nil
+                c << row [2]
+                next if row[3] == nil || row[3] == "NOTA" || row[8] == "Updated/Not Uptated" || row[8] == "Not Updated" 
+                e << row[8]
+              end
+                 b=@tns.length
+                 g=e.length
+                 d=c.length
+                 a=g.to_f/d.to_f*100.0
+                 quality=100.0-a.to_f
+                if wui ==7  
+                  b=@tns.length
+                  g=e.length
+                  d=c.length
+                  a=(g.to_f/d.to_f*100.0).round(2)
+                  quality=(100.0-a.to_f).round(2)
+                else
+                  b=(wui/7*b).round(2)
+                  d=(wui/7*d).round(2)
+                  g=g
+                  a=(g.to_f/d.to_f*100.0).round(2)
+                  quality=(100.0-a.to_f).round(2)
+                end
+            end
+              c.clear
+              e.clear
+              csv << [i,projectname,b,d,g,a,quality]
+          end
+      end    
+    end
+  end
+end
+
+    CSV.open("#{Rails.root}/public/files/#{fmonth}_#{anual}_audit_report.csv" ,"w") do |final|
+    final << ["Name","ProjectNames","Total sku","Sample count","FinalErrorCount","Error(%)","Quality(%)"]    
+    z=CSV.read("#{Rails.root}/public/out/outpro.csv")
+      a1=z.collect{|s| s[0]}.uniq
+       a1.each_with_index do |p,index|
+          next if index == 0
+            z.each do |s|
+              if p==s[0]
+                totp << s[1]
+                totsq << s[2].to_f
+                totsa << s[3].to_f
+                toter << s[4].to_f
+                err << s[5].to_f
+                qual << s[6].to_f
+              end
+                totsqu = totsq.inject(:+)
+                totsam = totsa.inject(:+)
+                toterr = toter.inject(:+)
+                totsqur = (totsqu.to_f).round(2)
+                totsamr = (totsam.to_f).round(2)
+                toterrr = (toterr.to_f).round(2)
+                qualp = qual.inject(:+)
+                errp = err.inject(:+)
+                errper = (toterr.to_f/totsam.to_f*100.0).round(2)
+                qualper = (100-errper).round(2)
+                totpr=totp.uniq.to_s.gsub!(/[^0-9A-Za-z,-,]/, '')
+            end
+              totsq.clear
+              totsa.clear
+              toter.clear
+              err.clear
+              qual.clear
+              totp.clear
+              final << [p,totpr,totsqur,totsamr,toterrr,errper,qualper]
+        end
+        
+   end
+else
+  tns=[]
+  name=[]
+  n=1;t=0;
+  a=[];b=[];c=[];d=[];e=[];g=[];quality=[];final=[];a3=[];first=[];
+  name1=[];a1=[];a2=[];totsq=[];totsa=[];totsater=[];err=[];qual=[];totsqu=[];totsam=[];qualper=[];errper=[];errp=[];qualp=[];toterr=[];toter=[];final=[]
+  totsqur=[];totsamr=[];toterrr=[],totpr=[];totp=[]
+  CSV.open("#{Rails.root}/public/out/outpro.csv" ,"w") do |csv|
+  csv << ["Name","Projectnames","Total sku","Sample count","FinalErrorCount","Error(%)","Quality(%)"]
+    file1.each do|kfile|
+     unless kfile[0] == nil
+        ff=CSV.read(kfile[0].tempfile)
+        ff.each_with_index do |row ,i| 
+          next if i==0
+          csv << [row[0],row[1],row[2].to_f,row[3].to_f,row[4]]
+        end    
+    end
+  end
+end
+    CSV.open("#{Rails.root}/public/files/#{anual}_audit_report.csv" ,"w") do |final|
+    final << ["Name","ProjectNames","Total sku","Sample count","FinalErrorCount","Error(%)","Quality(%)"]    
+    z=CSV.read("#{Rails.root}/public/out/outpro.csv")
+      a1=z.collect{|s| s[0]}.uniq
+
+       a1.each_with_index do |p,index|
+          next if index == 0
+            z.each do |s|
+              if p==s[0]
+                totp << s[1]
+                totsq << s[2].to_f
+                totsa << s[3].to_f
+                toter << s[4].to_f
+                err << s[5].to_f
+                qual << s[6].to_f
+              end
+                totsqu = totsq.inject(:+)
+                totsam = totsa.inject(:+)
+                toterr = toter.inject(:+)
+                totsqur = (totsqu.to_f).round(2)
+                totsamr = (totsam.to_f).round(2)
+                toterrr = (toterr.to_f).round(2)
+                qualp = qual.inject(:+)
+                errp = err.inject(:+)
+                errper = (toterr.to_f/totsam.to_f*100.0).round(2)
+                qualper = (100-errper).round(2)
+                totpr=totp.uniq.to_s.gsub(/\W/,'')
+              end
+              totsq.clear
+              totsa.clear
+              toter.clear
+              err.clear
+              qual.clear
+              totp.clear
+              final << [p,totpr,totsqur,totsamr,toterrr,errper,qualper]
+        end
+   end
+end
+end    
  def self.comparison
   File.open("#{Rails.root}/public/files/Output_comparison.csv","w") do |c| 
   a=File.open("#{Rails.root}/public/files/Vertical_Audit.csv","r",:headers=>'true').collect{|o|o.chomp}

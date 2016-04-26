@@ -92,6 +92,7 @@ GEM
     pjax_rails (0.4.0)
       jquery-rails
       railties (>= 3.2, < 5.0)
+    puma (3.4.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -187,6 +188,7 @@ DEPENDENCIES
   paperclip
   pg
   pjax_rails
+  puma
   rails (= 4.2.4)
   rails_12factor
   roo

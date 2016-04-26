@@ -3,6 +3,58 @@ class FacesController < ApplicationController
   def index
       @face=Face.all
   end
+   def audit_report
+      @face=Face.new
+    end
+    def audit_process 
+      wu=[];f1=[];f2=[];f3=[];f4=[];f5=[];f6=[];f7=[];f8=[];f9=[];f10=[];f11=[];f12=[];file1=[];fmonth=[],anual=[];reporttyp=[]
+    anual=params[:faces][:year]
+    reporttyp=params[:faces][:reporttype]
+    fmonth=params[:faces][:month]
+    f1 << params[:faces][:aa]
+    f2 << params[:faces][:bb]
+    f3 << params[:faces][:cc]
+    f4 << params[:faces][:dd]
+    f5 << params[:faces][:ee]
+    f6 << params[:faces][:ff]
+    f7 << params[:faces][:gg]
+    f8 << params[:faces][:hh]
+    f9 << params[:faces][:ii]
+    f10 << params[:faces][:jj]
+    f11 << params[:faces][:kk]
+    f12 << params[:faces][:ll]
+    f1 << params[:faces][:a]
+    f2 << params[:faces][:b]
+    f3 << params[:faces][:c]
+    f4 << params[:faces][:d]
+    f5 << params[:faces][:e]
+    f6 << params[:faces][:f]
+    f7 << params[:faces][:g]
+    f8 << params[:faces][:h]
+    f9 << params[:faces][:i]
+    f10 << params[:faces][:j]
+    f11 << params[:faces][:k]
+    f12 << params[:faces][:l]
+    f1 << params[:faces][:aaa]
+    f2 << params[:faces][:bbb]
+    f3 << params[:faces][:ccc]
+    f4 << params[:faces][:ddd]
+    f5 << params[:faces][:eee]
+    f6 << params[:faces][:fff]
+    f7 << params[:faces][:ggg]
+    f8 << params[:faces][:hhh]
+    f9 << params[:faces][:iii]
+    f10 << params[:faces][:jjj]
+    f11 << params[:faces][:kkk]
+    f12 << params[:faces][:lll]
+    file1 = f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12
+    @face=Face.audit_task(file1,fmonth,anual,reporttyp)
+    if reporttyp=="Monthly"
+    redirect_to "/files/#{fmonth}_#{anual}_audit_report.csv"
+    else 
+    redirect_to "/files/#{anual}_audit_report.csv"
+    end
+   end
   def duplication
     @dup=Face.new
   end

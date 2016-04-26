@@ -10,6 +10,7 @@ gem 'paperclip'
 gem 'pg'
 gem 'pjax_rails'
 gem 'rails_12factor', group: :production
+gem 'puma'
 #gem "hunspell-ffi"
 gem 'iconv'
 gem 'smarter_csv'
