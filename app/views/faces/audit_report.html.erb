@@ -14,58 +14,63 @@
 
   <tr>
    <%= form_for(:faces, :url=>{:controller=>"faces", :action=>"audit_process" ,:method=>"get"}) do |f|%>
-    
-    <tr><td> <%= f.select :month, options_for_select([['Select Month',""], "January","February","March","April", "May","June", "July","August","September","October","November","December"]) %> </td><td> <%= f.text_field :year,:placeholder=>"Enter the Year",:required=>true%> </td><td> <%= f.select :reporttype, options_for_select([["Select Report Type", ""], "Monthly","Yearly"]) %></td></tr>
+   
+    <tr><td> <%= f.select :month, options_for_select([["Select Month", ""], "January","February","March","April", "May","June", "July","August","September","October","November","December"]) %> </td><td> <%= f.text_field :year ,:placeholder=>"Enter the Year",:required=>true%> </td><td> <%= f.select :reporttype, options_for_select([["Select Report Type", ""], "Monthly","Yearly"])%></td></tr>
 
-      
-    <td> <%= f.file_field :aa,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-      
-    <td> <%= f.text_field :a ,:placeholder=>"Enter the WUI"%></td><td> <%= f.text_field :aaa ,:placeholder=>"Enter the Project Name"%></td></tr>
+        
+    <tr>
+    <td> <%= f.file_field :aa,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt', 'inline');"%></td>
        
+       
+    <td> <%= f.text_field :a ,:id=>'txt',:placeholder=>"Enter the WUI"%></td><td> <%= f.text_field :aaa ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
+         
     <tr> 
-    <td> <%= f.file_field :bb,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :b,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :bbb ,:placeholder=>"Enter the Project Name"%></td> </tr>
+    <td> <%= f.file_field :bb,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt1', 'inline');"%></td>
+    <td> <%= f.text_field :b,:placeholder=>"Enter the WUI",:id=>'txt1'%> </td><td> <%= f.text_field :bbb ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td> </tr>
     <tr> 
-    <td> <%= f.file_field :cc,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :c,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :ccc ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :cc,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt2', 'inline');"%></td>
+    <td> <%= f.text_field :c,:placeholder=>"Enter the WUI",:id=>'txt2'%> </td><td> <%= f.text_field :ccc ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
 
     <tr>
-    <td> <%= f.file_field :dd,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :d,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :ddd ,:placeholder=>"Enter the Project Name"%></td></tr>
-
-    <tr> 
-    <td> <%= f.file_field :ee,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :e,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :eee ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :dd,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt3', 'inline');"%></td>
+    <td> <%= f.text_field :d,:placeholder=>"Enter the WUI",:id=>'txt3'%> </td><td> <%= f.text_field :ddd ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
 
     <tr> 
-    <td> <%= f.file_field :ff,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :f,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :fff ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :ee,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt4', 'inline');"%></td>
+    <td> <%= f.text_field :e,:placeholder=>"Enter the WUI",:id=>'txt4'%> </td><td> <%= f.text_field :eee ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
+
+    <tr> 
+    <td> <%= f.file_field :ff,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt5', 'inline');"%></td>
+    <td> <%= f.text_field :f,:placeholder=>"Enter the WUI",:id=>'txt5'%> </td><td> <%= f.text_field :fff ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
 
     <tr>
-    <td> <%= f.file_field :gg,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :g,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :ggg ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :gg,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt6', 'inline');"%></td>
+    <td> <%= f.text_field :g,:placeholder=>"Enter the WUI",:id=>'txt6'%> </td><td> <%= f.text_field :ggg ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
 
     <tr>
-    <td> <%= f.file_field :hh,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :h,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :hhh ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :hh,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt7', 'inline');"%></td>
+    <td> <%= f.text_field :h,:placeholder=>"Enter the WUI",:id=>'txt7'%> </td><td> <%= f.text_field :hhh ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
 
     <tr>
-    <td> <%= f.file_field :ii,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :i,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :iii ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :ii,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt8', 'inline');"%></td>
+    <td> <%= f.text_field :i,:placeholder=>"Enter the WUI",:id=>'txt8'%> </td><td> <%= f.text_field :iii ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
 
     <tr>
-    <td> <%= f.file_field :jj,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :j,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :jjj ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :jj,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt9', 'inline');"%></td>
+    <td> <%= f.text_field :j,:placeholder=>"Enter the WUI",:id=>'txt9'%> </td><td> <%= f.text_field :jjj ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
     
     <tr>
-    <td> <%= f.file_field :kk,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :k,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :kkk ,:placeholder=>"Enter the Project Name"%></td></tr>
+    <td> <%= f.file_field :kk,:accept => 'text/csv',class: 'form-control',:id=>"f11",:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt10', 'inline');"%></td>
+    <td> <%= f.text_field :k,:placeholder=>"Enter the WUI",:id=>'txt10'%> </td><td> <%= f.text_field :kkk ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
 
     <tr>
-    <td> <%= f.file_field :ll,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);"%></td>
-    <td> <%= f.text_field :l,:placeholder=>"Enter the WUI"%> </td><td> <%= f.text_field :lll ,:placeholder=>"Enter the Project Name"%></td></tr>
-    <tr>
-   <td> <%= f.submit "Submit",:class => "btn btn-info" %></td>
+    <td> <%= f.file_field :ll,:accept => 'text/csv',class: 'form-control',:onchange=>"ValidateSingleInput(this);",:onclick=>"setVisibility('txt11', 'inline');"%></td>
+    <td> <%= f.text_field :l,:placeholder=>"Enter the WUI",:id=>'txt11'%> </td><td> <%= f.text_field :lll ,:placeholder=>"Enter the Project Name",:id=>'pn'%></td></tr>
+    
+
+  <tr>
+   <td> <%= f.submit "Submit",:class => "btn btn-info",:onclick=>"Validate()"%></td>
+   
    <td><a href="http://192.168.1.52:3000/faces/help_ver"  target="popup"
   onclick="window.open('http://192.168.1.52:3000/faces/help_ver','popup','width=700,height=400'); return false;"> Help</a></td>
   </tr>
@@ -79,4 +84,8 @@
 </div>
 
 </html>
-
+<script language="JavaScript">
+function setVisibility(id, visibility) {
+document.getElementById(id).style.display = visibility;
+}
+</script>

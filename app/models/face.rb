@@ -47,16 +47,17 @@ class Face < ActiveRecord::Base
   n=1;t=0;
   a=[];b=[];c=[];d=[];e=[];g=[];quality=[];final=[];a3=[];first=[];
   name1=[];a1=[];a2=[];totsq=[];totsa=[];totsater=[];err=[];qual=[];totsqu=[];totsam=[];qualper=[];errper=[];errp=[];qualp=[];toterr=[];toter=[];final=[]
-  totsqur=[];totsamr=[];toterrr=[],totpr=[];totp=[]
+  totsqur=[];totsamr=[];toterrr=[],totpr=[];totp=[];check=[]
   CSV.open("#{Rails.root}/public/out/outpro.csv" ,"w") do |csv|
   csv << ["Name","Projectnames","Total sku","Sample count","FinalErrorCount","Error(%)","Quality(%)"]
     file1.each do|kfile|
      unless kfile[0] == nil
-      if kfile[1]==""
         ff=CSV.read(kfile[0].tempfile)
+          check=ff[0][0]        
+        if check=="Name"
         ff.each_with_index do |row ,i| 
           next if i==0
-          csv << [row[0],row[1].to_f,row[2].to_f,row[3].to_f]
+          csv << [row[0],row[1],row[2].to_f,row[3].to_f,row[4]]
         end
       else
         wui=kfile[n].to_f
@@ -78,7 +79,7 @@ class Face < ActiveRecord::Base
                  d=c.length
                  a=g.to_f/d.to_f*100.0
                  quality=100.0-a.to_f
-                if wui ==7  
+                if wui ==7 || wui ==""
                   b=@tns.length
                   g=e.length
                   d=c.length

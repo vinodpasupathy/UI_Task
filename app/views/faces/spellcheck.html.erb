@@ -11,7 +11,7 @@
   <%= form_for([@face], :url=>{:controller=>"faces", :action=>"spell_process"}) do |f|%>
 
   <td><%= f.label :file_1,"Audit_File" %></td>
-  <td> <%= f.file_field :file_1,:accept => 'text/csv',:class=>"btn btn-warning"%></td>
+  <td> <%= f.file_field :file_1,:accept => 'text/csv',:onchange=>"ValidateSingleInput(this);",:class=>"btn btn-warning"%></td>
  </tr>
 
  <tr>

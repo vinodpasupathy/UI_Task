@@ -16,7 +16,7 @@
   <tr>
    <%= form_for([@face], :url=>{:controller=>"faces", :action=>"consicutive_process"}) do |f|%>
    <td><%= f.label :file_1,"Input_File" %></td>
-   <td> <%= f.file_field :file_1,:accept => 'text/csv',class: 'form-control', :required => true%></td>
+   <td> <%= f.file_field :file_1,:accept => 'text/csv',:onchange=>"ValidateSingleInput(this);",class: 'form-control', :required => true%></td>
   </tr>
 
   <tr>
