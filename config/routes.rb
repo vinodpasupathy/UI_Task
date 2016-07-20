@@ -47,6 +47,15 @@ Rails.application.routes.draw do
   post 'faces/help_uom'
   post 'faces/consicutive'
   post 'faces/consicutive_process'
+ 
+  get 'faces/welookup'
+   
+  post 'faces/welookup'
+
+  get 'faces/pilot'
+   
+  post 'faces/pilot'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+	
+    <title>Admin Dashboard</title>
+
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>  
+    
+    <script src="https://use.fontawesome.com/2bea6896d9.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+
+  </head>
+
+<body>
+<div id='hm'><%= link_to image_tag("/assets/hicon.png",height: '55', width:'55'),faces_index_path%></div>
+
+<div id="shadow">
+
+<div id='index'></div>
+
+<div id='header'>
+
+<div id="h1"><i>Vlookup</i></div></div>
+
+<div id='content'>
+
+<div class="table stripped custab">
+<!--table class="table"-->
+
+
+      <%= form_for Face.new, :url=>{:controller=>"faces", :action=>"pilot",:format=>"csv"} do |i|%>
+
+        Input File:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="btn btn-default btn-file"><%= i.file_field :file3,:required=>""%></span><br/><br/>
+
+        Refernce File:<span class="btn btn-default btn-file"><%= i.file_field :file4,:required=>""%></span><br/>
+
+        <button style="margin-top: 4%; margin-left: 12%;" type="submit" class="btn btn-info"><i aria-hidden="true" class="fa fa-cloud-download"></i>Download</button>
+      
+    <%end%>
+
+<!--/table-->
+</div>
+
+<center><b>Note:Upload (.csv) Files only.</b></center>
+
+</div>
+
+</div>
+</body>
+</html>

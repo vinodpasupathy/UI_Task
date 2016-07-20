@@ -406,4 +406,36 @@ end
     
      end
 =end  end
+
+def self.pil2(file1,file2)
+  #$cc=[]
+  #$cc.clear
+ CSV.open("#{Rails.root}/public/files/output.csv","w", {:col_sep => "\t",:row_sep => "\r\n"}) do |csv|
+
+  csv << ["Item ID","QA_Manufacturer Name","Value"]
+
+      @pilot1= File.open(file1.tempfile,"r").collect{|p| p.chomp.split("\t")}
+
+      @pilot1.shift
+
+      @pilot2= File.open(file2.tempfile,"r").collect{|p| p.chomp.split("\t")}
+     
+      @pilot2.shift
+     
+@pilot1.map do |p|
+
+  c = []
+  @pilot2.map do |q|
+   if p[1] == q[0]
+    c << [p[0],p[1],q[1]]
+    end
+  end
+   if c.empty?
+     csv << [p[0],p[1],"#NA"].flatten
+   else
+     csv << c.flatten
+   end
+  end
+ end
+  end
   end

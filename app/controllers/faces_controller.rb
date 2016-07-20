@@ -132,6 +132,30 @@ class FacesController < ApplicationController
     end
   end
 
+ def pilot
+file1=params[:face][:file3]
+      file2=params[:face][:file4]
+
+      filename=params[:face][:file3].original_filename
+      filename=params[:face][:file4].original_filename
+     
+      @face=Face.pil2(file1,file2)
+    
+      unless @face.blank?
+
+      flash[:notice] = "Your file has been successfully imported."
+
+      redirect_to "/files/output.csv"
+   
+      else
+
+       flash[:notice] = "Invalid file headers or file format"
+     
+       redirect_to :action=> "welookup"
+    
+      end
+end
+
 def consicutive
   @face=Face.new
 end
